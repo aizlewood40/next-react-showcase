@@ -1,6 +1,6 @@
 import { useFormStatus } from "react-dom"
 
-const SubmitButton = () => {
+const SubmitButton: React.FC = () => {
     const status = useFormStatus();
     return (
         <button>
