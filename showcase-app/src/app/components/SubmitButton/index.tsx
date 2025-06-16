@@ -1,6 +1,8 @@
+import * as React from "react";
 import { useFormStatus } from "react-dom"
 
-const SubmitButton: React.FC = () => {
+
+const SubmitButton: React.FC = (): React.JSX.Element => {
     const status = useFormStatus();
     return (
         <button>
