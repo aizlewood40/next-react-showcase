@@ -1,0 +1,6 @@
+.patientTabletContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border-bottom: 1px black solid;
+}

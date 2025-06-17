@@ -2,21 +2,27 @@
 import { PatientContext } from "@/app/context/PatientContext";
 import * as React from "react";
 import { useContext } from "react";
-import { useFormStatus } from "react-dom"
+
+import styles from "./index.module.css";
+import PatientTablet from "../PatientTablet";
 
 
 const PatientsGrid: React.FC = (): React.JSX.Element => {
     const { state } = useContext(PatientContext);
+
+    // solution to handle server side hydration with local storage
+    const [isClient, setIsClient] = React.useState(false);
+ 
+    React.useEffect(() => {
+      setIsClient(true)
+    }, []);
     
-    const patientTabletMap = state.map((patient, i) => (
-        <div key={`patient-${i}`}>
-            name: {patient.name}
-            date of birth: {patient.dateOfBirth.toString()}
-        </div>
-    ));
+    const patientTabletMap = isClient ? state?.map((patient, i) => (
+        <PatientTablet name={patient.name} dateOfBirth={patient.dateOfBirth} patientID={patient.patientID} key={`patient-${i}`}/>
+    )) : null;
     
     return (
-        <div>
+        <div className={styles.patientTabletFlex}>
             {patientTabletMap}
         </div>
     )
