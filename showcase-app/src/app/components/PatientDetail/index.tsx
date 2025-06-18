@@ -2,23 +2,19 @@
 import * as React from "react";
 import { PatientContext } from "@/app/context/PatientContext";
 import { IPatient } from "@/app/context/PatientContext/data";
+import PatientAppointmentList from "../PatientAppointmentList";
 
 import styles from "./index.module.css";
-import PatientAppointmentList from "../PatientAppointmentList";
 
 interface IProps {
     patientID: string;
 }
 
 const PatientDetail: React.FC<IProps> = ({patientID}: IProps): React.JSX.Element => {
+
     const { getPatient } = React.useContext(PatientContext);
 
-    const [patient, setPatient] = React.useState<IPatient | null>(null);
-
-    React.useEffect(() => {
-        setPatient(getPatient(patientID));
-    }, [getPatient, setPatient]);
-    
+    const patient: IPatient | null = getPatient(patientID);
     
     return (
         <div>
@@ -36,7 +32,7 @@ const PatientDetail: React.FC<IProps> = ({patientID}: IProps): React.JSX.Element
             </>    
             ) : ("an error occured")}
         </div>
-    )
+    );
 };
 
 export default PatientDetail;

@@ -1,8 +1,8 @@
 "use client"
 import * as React from "react";
+import Link from "next/link";
 
 import styles from "./index.module.css";
-import Link from "next/link";
 
 interface IProps {
     name: string;
@@ -11,6 +11,7 @@ interface IProps {
 }
 
 const PatientTablet: React.FC<IProps> = ({name, dateOfBirth, patientID}: IProps): React.JSX.Element => {
+    
     return (
         <div className={styles.patientTabletContainer}>
             <div className={styles.name}>Name: {name}</div>
@@ -18,7 +19,7 @@ const PatientTablet: React.FC<IProps> = ({name, dateOfBirth, patientID}: IProps)
             <div className={styles.patientID}>Patient ID: {patientID}</div>
             <Link href={`/patient/${patientID}`}>Open</Link>
         </div>
-    )
+    );
 };
 
 export default PatientTablet;

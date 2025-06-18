@@ -25,7 +25,7 @@ const PatientsGrid: React.FC = (): React.JSX.Element => {
         <div className={styles.patientTabletFlex}>
             {patientTabletMap}
         </div>
-    )
+    );
 };
 
 export default PatientsGrid;

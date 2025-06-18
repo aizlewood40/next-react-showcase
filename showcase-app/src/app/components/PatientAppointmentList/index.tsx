@@ -54,7 +54,7 @@ const PatientAppointmentList: React.FC<IProps> = ({appointments}: IProps): React
                 </tbody>
             </table>
         </>
-    )
+    );
 };
 
 export default PatientAppointmentList;

@@ -1,7 +1,7 @@
 "use client"
 import React, { Dispatch, SetStateAction, createContext } from "react";
-import { IPatient, patientMockData } from "./data";
 import { useLocalStorage } from "usehooks-ts";
+import { IPatient, patientMockData } from "./data";
 
 export interface IPatientContextConfig {
     state: IPatient[];
@@ -24,6 +24,7 @@ interface IProps {
 }
 
 const PatientContextProvider: React.FC<IProps> = ({children, overrideDefaultState}: IProps) => {
+    
     const contextInitialState = !overrideDefaultState ? patientMockData : overrideDefaultState;
 
     const [state, setPatients] = useLocalStorage('patients-key', contextInitialState);

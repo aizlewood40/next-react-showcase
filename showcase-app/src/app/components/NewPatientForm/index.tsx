@@ -8,7 +8,6 @@ const NewPatientForm: React.FC = (): React.JSX.Element => {
     const { addPatient, state } = React.useContext(PatientContext)
 
     const formSubmitAction = (formData: any) => {
-        // input sanitation
         const name = formData.get("name");
         const dateOfBirth = formData.get("dateOfBirth");
         const patientID = formData.get("patientID");
@@ -17,7 +16,6 @@ const NewPatientForm: React.FC = (): React.JSX.Element => {
             return alert("Enter a name");
         }
 
-        console.log(dateOfBirth);
         if(new Date(dateOfBirth) > new Date()) {
             return alert("Enter a valid date of birth");
         }
