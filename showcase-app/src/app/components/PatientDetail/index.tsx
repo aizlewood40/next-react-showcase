@@ -12,9 +12,13 @@ interface IProps {
 
 const PatientDetail: React.FC<IProps> = ({patientID}: IProps): React.JSX.Element => {
 
-    const { getPatient } = React.useContext(PatientContext);
+    const [patient, setPatient] = React.useState(null);
 
-    const patient: IPatient | null = getPatient(patientID);
+    React.useEffect(() => {
+        fetch(`/api/patients/${patientID}`).then(async (response) => {
+            setPatient(await response.json());
+        });
+    }, []);
     
     return (
         <div>
@@ -30,7 +34,7 @@ const PatientDetail: React.FC<IProps> = ({patientID}: IProps): React.JSX.Element
                     <PatientAppointmentList appointments={patient.appointments} />
                 </div>
             </>    
-            ) : ("an error occured")}
+            ) : ("Awaiting patient data")}
         </div>
     );
 };
